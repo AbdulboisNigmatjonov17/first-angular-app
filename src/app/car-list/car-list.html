@@ -16,9 +16,11 @@
 </div>
 <ul>
     @for(car of cars; track car.id) {
-        <li>
-            {{car.id}} - {{car.name}} - {{car.year}}
-            <button (click)="onDelete(car)">Delete</button>
-        </li>
+    <li>
+        {{car.id}} - {{car.name}} - {{car.year}}
+        <button (click)="onDelete(car)">Delete</button>
+    </li>
     }
 </ul>
+<h1>Purchases from {{ company | text: 'capitalize' }} on {{ purchasedOn | date: 'fullDate' }}</h1>
+<p>Total: {{ amount | currency: 'EUR' }}</p>
