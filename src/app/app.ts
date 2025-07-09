@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, effect, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CarList } from "./car-list/car-list";
 import { CurrencyPipe } from '@angular/common';
@@ -9,13 +9,21 @@ import { CurrencyPipe } from '@angular/common';
   templateUrl: './app.html',
 })
 export class App {
-  price = signal(100);
+  count = signal(0);
 
-  tax = computed(() => this.price() * 0.2);
-  totalPrice = computed(() => this.price() + this.tax());
-
-  applyDiscount() {
-    const discount = this.price() * 0.1;
-    this.price.set(this.price() - discount);
+  constructor() {
+    effect(() => console.log('count', this.count()))
+  }
+  increment() {
+    this.count.set(this.count() + 1);
+  }
+  decrement() {
+    this.count.set(this.count() - 1);
+  }
+  reset() {
+    this.count.set(0);
   }
 }
+// signal() - Qiymat saqlidi,
+// computed() - Signal asosida avtomatik hisoplangan qiymat,
+// effect() - Signal ozgarishlarini kuzatadi va qayta ishlidi.
