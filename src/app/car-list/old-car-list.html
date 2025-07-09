@@ -1,0 +1,26 @@
+<!-- <p class="paragraph">{{carName}}</p>
+<ul>
+    <li>{{car.id}}</li>
+    <li>{{car.name}}</li>
+    <li>{{car.year}}</li>
+</ul> -->
+<!-- 
+() -> Event Binding
+[] -> Property Binding
+{{}} -> Interpolation
+-->
+<div>
+    <input type="text" placeholder="Car Name" [(ngModel)]="carName">
+    <input type="date" placeholder="Car Year" [(ngModel)]="carYear">
+    <button (click)="onSubmit()">Add</button>
+</div>
+<ul>
+    @for(car of cars; track car.id) {
+    <li>
+        {{car.id}} - {{car.name}} - {{car.year}}
+        <button (click)="onDelete(car)">Delete</button>
+    </li>
+    }
+</ul>
+<h1>Purchases from {{ company | text: 'capitalize' }} on {{ purchasedOn | date: 'fullDate' }}</h1>
+<p>Total: {{ amount | currency: 'EUR' }}</p>

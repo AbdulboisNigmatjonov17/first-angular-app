@@ -1,13 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CarList } from "./car-list/car-list";
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CarList],
-  template: `<app-car-list></app-car-list>
-  <h3 class="paragraph">Hello ddim sanga</h3>`,
+  templateUrl: './app.html',
 })
 export class App {
-  protected title = 'angular-app';
+  count = signal(0)
+
+  readonlyCount = this.count.asReadonly()
+
+  increment() {
+    this.count.update(value => value + 1)
+  }
+  decrement() {
+    this.count.update(value => value - 1)
+  }
+  reset() {
+    this.count.set(0)
+  }
 }
