@@ -1,8 +1,13 @@
 <input type="email" [value]="email()" (input)="onEmailChange($event)" />
 <p>Email: {{email()}}</p>
 
-<app-article></app-article>
+<div class="card">
+    <div class="card-header">
+        <img [ngSrc]="preiviewImage" fill priority/>
+    </div>
+</div>
 
+<app-article></app-article>
 @defer (on timer(3s)) {
 <app-comments />
 } @placeholder {
