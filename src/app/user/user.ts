@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, computed, EventEmitter, Input, Output, signal } from '@angular/core';
 import { IUser } from '../interfaces';
 
 @Component({
@@ -9,12 +9,13 @@ import { IUser } from '../interfaces';
 })
 
 export class UserComponent {
-  @Input() userName: string = ''
-  @Input() users: IUser[] = []
-  @Output() deleteUserEvent = new EventEmitter<IUser>();
+  private _name = signal('');
 
-  onDelete(user: IUser) {
-    this.deleteUserEvent.emit(user)
+  @Input()
+  set nameInput(value: string) {
+    this._name.set(value)
   }
+
+  name = computed(() => this._name())
 }
 
