@@ -1,1 +1,10 @@
 <p>Hello {{userName}}!</p>
+
+<p>Users:</p>
+
+<ul>
+    @for(user of users; track user.id) {
+    <li>{{user.name}} - {{user.age}} - {{user.id}}</li>
+    <button (click)="onDelete(user)">delete</button>
+    }
+</ul>
