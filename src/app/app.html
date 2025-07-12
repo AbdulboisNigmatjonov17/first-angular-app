@@ -1,2 +1,12 @@
 <input type="email" [value]="email()" (input)="onEmailChange($event)" />
 <p>Email: {{email()}}</p>
+
+<app-article></app-article>
+
+@defer (on timer(3s)) {
+<app-comments />
+} @placeholder {
+<p>This is a comment place or side</p>
+} @loading(after 5s) {
+<p>Loading comment...</p>
+}
