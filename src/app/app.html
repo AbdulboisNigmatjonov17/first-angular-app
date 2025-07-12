@@ -1,1 +1,2 @@
-<app-user [nameInput]="'Kortu'"></app-user>
+<input type="email" [value]="email()" (input)="onEmailChange($event)" />
+<p>Email: {{email()}}</p>
